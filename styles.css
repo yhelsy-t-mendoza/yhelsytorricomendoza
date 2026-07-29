@@ -1,0 +1,547 @@
+/* ==========================================================================
+   YHELSY TORRICO — Portfolio
+   Design concept: "The Case File" — a civic dossier, re-tuned for a bolder,
+   more contemporary register: confident magenta-plum + gold on crisp white,
+   a heavier display serif, and a distinct grotesk body face. Feminist color
+   lineage (violet/gold, echoing suffrage-movement colors) reworked for a
+   professional, international, youth-forward audience.
+   ========================================================================== */
+
+:root {
+  /* Color tokens */
+  --ink:        #241428;   /* near-black plum, headings/body text */
+  --ink-soft:   #5B4562;   /* muted plum-grey, secondary text */
+  --paper:      #FBF9FC;   /* crisp near-white, faint lavender tint */
+  --paper-raised: #FFFFFF; /* card surface */
+  --paper-line: #E6DEEA;   /* hairline rules */
+  --seal:       #93195E;   /* vivid magenta-plum — primary accent */
+  --seal-dark:  #6E1148;
+  --gold:       #B7893A;   /* foil gold — honors / secondary accent */
+  --gold-soft:  #E7CE93;
+  --charcoal:   #1C0F20;
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Space Grotesk", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+
+  --max-width: 1180px;
+  --radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(147,25,94,0.05), transparent 42%),
+    radial-gradient(circle at 92% 85%, rgba(183,137,58,0.06), transparent 45%);
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--seal); text-decoration: none; font-weight: 600; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--seal);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------------- Letterhead / masthead ---------------------------------- */
+
+.masthead {
+  border-bottom: 3px solid var(--ink);
+  background: var(--paper-raised);
+}
+
+.masthead-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 14px 0 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.masthead-top .ref { text-transform: uppercase; font-weight: 500; }
+.masthead-top .loc { text-transform: uppercase; font-weight: 500; }
+
+.masthead-main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 24px 0 22px;
+}
+
+.masthead-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 4.6vw, 48px);
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  margin: 0;
+  line-height: 1.03;
+}
+
+.masthead-tag {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  max-width: 46ch;
+}
+
+.seal-mark {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+
+/* ---------------- File-tab navigation ------------------------------------ */
+
+nav.filetabs {
+  background: var(--ink);
+}
+
+nav.filetabs .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+
+nav.filetabs a {
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 17px;
+  border-right: 1px solid rgba(251,249,252,0.12);
+  text-decoration: none;
+  position: relative;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+nav.filetabs a:hover { background: rgba(251,249,252,0.1); text-decoration: none; }
+
+nav.filetabs a.active {
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+nav.filetabs a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 3px;
+  background: var(--seal);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* ---------------- Hero -------------------------------------------------- */
+
+.hero {
+  padding: 68px 0 58px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--seal);
+  margin: 0 0 14px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.1;
+  color: var(--ink);
+  max-width: 22ch;
+  margin: 0 0 20px;
+}
+
+.hero p.lede {
+  font-size: 18.5px;
+  font-weight: 500;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  margin: 0 0 28px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  color: var(--ink);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+
+.btn.primary {
+  background: var(--seal);
+  border-color: var(--seal);
+  color: #FFFFFF;
+}
+
+.btn.primary:hover { background: var(--seal-dark); border-color: var(--seal-dark); }
+
+/* ---------------- Ledger -------------------------------------------------- */
+
+.ledger {
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.ledger-item {
+  padding-right: 20px;
+  border-right: 1px solid var(--paper-line);
+}
+.ledger-item:last-child { border-right: none; }
+
+.ledger-figure {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--seal);
+  display: block;
+}
+
+.ledger-label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* ---------------- Sections ------------------------------------------------ */
+
+.section {
+  padding: 58px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--seal);
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(23px, 3vw, 31px);
+  color: var(--ink);
+  margin: 0;
+}
+
+.section-intro {
+  max-width: 68ch;
+  color: var(--ink-soft);
+  margin: -20px 0 32px;
+}
+
+/* ---------------- Cards ---------------------------------------------------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 25px 27px;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(36,20,40,0.04);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  background: var(--gold-soft);
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.card.seal-accent::before { background: var(--seal); }
+
+.card .file-no {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19.5px;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+
+.card .role {
+  font-size: 13.5px;
+  color: var(--seal);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.card .period {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.card ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.card li { margin-bottom: 6px; }
+.card li:last-child { margin-bottom: 0; }
+
+.card-full { grid-column: 1 / -1; }
+
+/* ---------------- Award / seal tiles --------------------------------------- */
+
+.award-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.award {
+  background: var(--paper-raised);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 22px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 1px 2px rgba(36,20,40,0.04);
+}
+
+.award-stamp {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+}
+
+.award h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16.5px;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+
+.award .issuer {
+  font-size: 13px;
+  color: var(--seal);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.award .year {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.award p {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------------- Research / paper entries --------------------------------- */
+
+.paper {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 22px;
+  align-items: start;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.paper:last-child { border-bottom: none; }
+
+.paper .year-tag {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--seal);
+  padding-top: 4px;
+}
+
+.paper h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19.5px;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.paper .venue {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.paper p.abstract {
+  font-size: 14.5px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  max-width: 62ch;
+  margin: 0;
+}
+
+.paper .paper-action { align-self: start; padding-top: 4px; }
+
+/* ---------------- Footer --------------------------------------------------- */
+
+footer {
+  padding: 40px 0 50px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+footer .foot-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid var(--paper-line);
+  padding-top: 20px;
+}
+
+footer a { color: var(--ink); font-weight: 600; }
+
+/* ---------------- Responsive ------------------------------------------------ */
+
+@media (max-width: 860px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .award-grid { grid-template-columns: 1fr; }
+  .ledger { grid-template-columns: repeat(2, 1fr); }
+  .paper { grid-template-columns: 1fr; }
+  .paper .paper-action { justify-self: start; }
+}
+
+@media (max-width: 640px) {
+  .ledger { grid-template-columns: 1fr 1fr; }
+  .ledger-item { border-right: none; padding-right: 0; }
+
+  nav.filetabs .wrap {
+    display: none;
+    flex-direction: column;
+  }
+  nav.filetabs .wrap.open { display: flex; }
+  nav.filetabs a { border-right: none; border-bottom: 1px solid rgba(251,249,252,0.1); }
+
+  .nav-toggle {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    cursor: pointer;
+  }
+}
+
+/* ---------------- Reveal-on-scroll ------------------------------------------ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
